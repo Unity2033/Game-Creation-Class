@@ -17,12 +17,19 @@ void main()
     // int [ box(100) ] <- 100;
     // 전체 주석
 
-    /*
+    char alphabet = 'A';
     int box = 100;  
-    printf("%d\n", box);
-    printf("안녕하세요!? 김금수입니다.");
-    */
+    float pi = 3.14;
 
+    // 문자열로 지정한 100입니다.
+    printf("100\n"); 
+
+    // box라는 변수의 저장되어 있는 값을 출력하는 100입니다.
+    printf("%d\n", box);
+    printf("%c\n", alphabet);
+    printf("%f\n", pi);
+
+    printf("안녕하세요!? 김금수입니다.");
 }
 
 
