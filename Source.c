@@ -1,98 +1,91 @@
 #include <stdio.h>
+// scanf를 쓰고 싶을 때 전처리기로 Erorr 코드 4996을 비활성화합니다.
+#pragma warning(disable:4996)
 
 void main()
 { 
-    // 구구단
-    /*
-    for (int i = 2; i <= 9; i++)
-    {
-        for (int j = 1; j <= 9; j++)
-        {
-            printf("%d x %d = %d\n", i, j, i * j);
-        }
+	// scanf 함수
+	/*
+	int value = 50;
 
-        printf("\n");
-    }
-    */
+	scanf("%d", &value);
+    printf("value의 값 : %d\n", value);
+	*/
 
-    // while 문이란?
-    // 특정 조건을 만족할 때까지 계속해서 주어진 명령문을 실행하는 반복문입니다.
-    /*
-    int memory = 5;
+	// 주소 연산자
+	/*
+	// 변수의 주소 값을 반환하는 연산자입니다.
+	
+	int x = 100;
 
-    while (memory > 1)
-    {
-        memory--;
-        printf("조건이 참입니다.\n");
-    }
-    */
+	// 변수의 주소는 프로그램이 실행될 때마다 바뀝니다.
+	// 변수의 주소는 16진수로 표기합니다.
+	// 16진수 1 ~ F 까지 표현합니다.
+	// 1 2 3 4 5 6 7 8 9 A(10) B(11) C(12) D(13) E(14) F(15)
+	printf("x 변수의 주소 : %p\n", &x);
+	*/
 
-    // do while 문이란 ?
-    /*
-    // 조건과 상관없이 한 번의 작업을 수행한 다음 조건에 따라 명령문을 실행하는 반복문입니다.
-    int value = 5;
+	// 포인터 
+	/*
+	// 변수의 메모리 주소를 저장하는 변수입니다.
+	int a = 20;
 
-    do
-    {
-        // do에서 선언한 변수는 while의 조건으로 사용할 수 없습니다.
-        // int x = 10; 
-        printf("조건이 거짓입니다.");
-    } 
-    while (value == 10);
-    */
+	// ptr은 포인터 변수이며, 변수의 주소를 저장할 수 있습니다.
+	// ptr은 a의 주소를 가지고 있으며, ptr 변수는 a의 시작 주소를 가리  키고 있습니다.
+	int * ptr = &a;
 
-    // continue 문이란?
-    /*
-    // 해당 조건문만 실행하지 않고, 반복문은 이어서 실행하는 제어문입니다. 
-    // 1 ~ 10까지의 수를 출력하는데 3의 배수만 제외하고 출력해주세요.
-    for (int i = 0; i <= 10; i++)
-    {
-        if (i % 3 == 0)
-            continue;
+	printf("a의 값 : %d\n", a);
+	printf("a의 주소 : %p\n", &a);
+    
+	// ptr이 가리키는 값을 출력할 때는 &를 사용하지 않아도 됩니다.
+	printf("ptr이 가리키는 주소 : %p\n", ptr);
 
-        printf("%d ", i);
-    }
-    */
+	// 역참조
+	*ptr = 100;
+	
+	printf("a의 값 : %d\n", a);
 
-    // 형 변환이란?
-    // 서로 다른 자료형을 가지고 있는 변수끼리 연산이 이루어질 때 기존에 지정했 던 자료형을 다른 자료형으로 변환하는 과정입니다.
+	// ptr의 고유 주소를 출력할 때는 &를 사용해야 합니다.
+	printf("ptr의 고유 주소 : %p\n", &ptr);
 
-    // 암묵적 형 변환
-    // 서로 다른 자료형으로 연산이 이루어질 때 자료형의 크기가 큰 자료형으로 변 환되는 과정입니다.
-    /*
-    printf("char의 크기 : %d\n", sizeof(char));
-    printf("short의 크기 : %d\n", sizeof(short));
-    printf("int의 크기 : %d\n", sizeof(int));
-    printf("long의 크기 : %d\n", sizeof(long));
-    printf("float의 크기 : %d\n", sizeof(float));
-    */
+	// 포인터의 크기
+    // 32비트 컴파일러에서는 4 byte
+	// 64비트 컴파일러에서는 8 byte 
 
-    char x = 10;
-    short y = 20;
+	printf("포인터 변수의 크기 : %d", sizeof(ptr));
+	*/
 
-    //  30  =  4 byte (int) + 4 byte (int)
-    int sum = x + y;
+	// 시프트 연산자
+	/*
+	// 비트의 값을 주어진 숫자만큼 부호 방향으로 이동시키는 연산자입니다.
 
-    int z = 500; 
-    char temp = z; 
+	// >> 오른쪽으로 비트를 이동시키는 부호 
+	// << 왼쪽으로 비트를 이동시키는 부호
+	
+	// [0] [0] [0] [0] [1] [0] [1] [0] = 10
+	char count = 10;
 
-    printf("temp의 값 : %d\n", temp);
+	// 왼쪽으로 한 칸 밀었을 때
+    // [0] [0] [0] [1] [0] [1] [0] [0] = 20
+	printf("왼쪽 1번 시프트 연산한 결과 : %d\n", count <<= 1);
 
-    // 명시적 형 변환
-    int p0 = 10;
-    int p1 = 3;
+	printf("count 변수의 값 : %d\n", count);
 
-    // result <- p0 float / p1 float
-    float result = (float)p0 / p1;
-    printf("result의 값 : %f", result);
+	// 오른쪽
+    // [0] [0] [0] [0] [0] [0] [1] [0] = 2
+	printf("오른쪽으로 3번 시프트 연산한 결과 : %d\n", count >>= 3);
+	*/
 
-    // int와 long의 차이
-    // int는 32비트 운영체제와 64비트 운영체제에서도 4 Byte의 크기를 가집니다.
+	// ☆ 찍기
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			printf("☆");
+		}
 
-    // long은 32비트 운영체제에서는 4 Byte이고 64비트 운영체제에서는 8 Byte의 크기를 가집니다.
-
-    // 단, long도 윈도우즈 64비트 운영체제에서는 4 Byte입니다.
-
+		printf("\n");
+	}
 
 }
 
