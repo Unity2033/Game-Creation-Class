@@ -1,111 +1,143 @@
 #include <stdio.h>
 
+// char, int, float
+
+// void는 자료형이 없다.
+// 사용자 정의 함수는 main() 함수에 외부에서 선언이 되어야 합니다.
+// 함수에 매개변수가 들어가지 않아도 선언할 수 있습니다.
+void Function()	// () <- 매개변수가 들어가는 영역입니다.
+{ // <- Function() 함수의 시작점
+
+	printf("안녕하세요?\n");	// printf() 라이브러리 함수
+	printf("안녕하세요?\n");
+	printf("안녕하세요?\n");
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("안녕하세요?\n");
+	}
+} // <- Function() 함수의 종료 지점
+
+// 매개 변수
+// 함수의 정의에서 전달받은 인수를 함수 내부로 전달하기 위해 사용하는 변수입니다.
+// 매개 변수를 선언하기 위해서는 자료형을 정해주어야 합니다.
+void Temp(int x)
+{
+	printf("변수의 x의 : %d\n", x);
+}
+
+// 함수의 이름도 중복이 허용되지 않습니다.
+// 매개변수는 여러 개를 생성해서 사용할 수 있습니다.
+void Add(int x, int y)
+{
+	int result = x + y;
+	printf("result 변수의 값 : %d", result);
+}
+
+// 전역 변수
+// 함수 외부에서 선언된 변수로, 어디서든 접근 가능하며,
+// 프로그램이 종료될 때 메모리에서 사라지는 특징을 가지고 있습니다.
+
+// 지역 변수는 스택 영역에 저장됩니다.
+// 전역 변수는 데이터 영역에 저장됩니다. -> 초기화 되지 않은 영역
+int count;
+
+void Minus()
+{
+	count++;
+	printf("count 변수의 주소 : %p\n", &count);
+	printf("count 변수의 값 : %d\n", count);
+}
+
+// 정적 변수
+// 지역 변수의 특성을 가지면서, 전역 변수의 특성을 가지고 있는 변수입니다.
+void Home()
+{
+	static int variable = 0;
+	variable++;
+	printf("variable 변수의 값 : %d\n", variable);
+} // <- variable(프로그램이 종료될 때까지 메모리에 남아있습니다.)
+
+// [코드]
+// [데이터] -> 정적 변수, 전역 변수 (프로그램이 종료될 때까지 메모리에서 사라지지 않습니다.) 
+// [힙] -> 동적 할당(프로그래머가 직접 관리하는 메모리 영역)
+// [스택] -> 
+
+void Area()
+{
+	int position = 0;
+	position++;		    
+	printf("position 변수의 값 : %d\n", position);
+} // <- 여기서 position 변수의 메모리는 소멸됩니다.
+
+// 반환형이란?
+// 함수의 실행이 끝나고 함수에게 전달하는 결과 값입니다.
+// void는 자료형이 없으므로 반환형이 필요없습니다.
+// 자료형이 있는 함수는 자료형에 알맞는 결괏값을 돌려주어야 합니다.
+
+int Calculator()
+{
+	return 10;
+}
+
+// 함수의 자료형과 반환하는 값의 형태가 일치하지 않으면 원하는 결과 값을 없을 수 없습니다.
+float Divide(float x, float y)
+{
+	return x / y; 
+}
+
+// 사용자 정의 함수를 사용하려면 main()함수에서 무조건 호출해주어야 합니다.
 void main()
 {
-	// 문자열이란?
+	// 함수
 	/*
-	// 연속적인 메모리 공간에 저장된 문자 변수의 집합입니다.
- 
-    // char는 1 byte이므로 하나의 문자만 저장할 수 있습니다.
-	char alphabet = 'A';
+	// 하나의 특별한 목적의 작업을 수행하기 위해 독립적으로 설계된 코드의 집합입니다.
+	
+	// 매개변수를 선언한 함수는 함수를 호출할 때 인수를 넣어주어야 합니다.
+	// 호출하는 함수의 이름 정확하게 넣어주어야 합니다.
 
-                      // 0    1    2    3    4     
-	char string [6] = { 'A', 'B', 'C', 'D', 'E'};
-
-	string[0] = 'T';
-
-	// 문자 배열을 선언할 때 맨 마지막에 NULL만 포함됩니다.
-	// 문자 배열같은 경우에는 배열의 크기 n + 1로 설정해야 합니다. 
-	printf("string 배열의 값 : %s\n", string);
-
-	// NULL문자는 문자열의 끝을 알려주는 제어 문자입니다.
-
-	// [T] [B] [\0] [D] [E]
-	string[2] = '\0';
-
-	// 문자 배열 중간에 NULL문자가 있으면 NULL문자 이전의 문자열까지만 출력합니다.
-	printf("string 배열의 값 : %s\n", string);
+	Function(); // < 함수의 호출 
+	Function(); 
 	*/
 
-	// 문자열 초기화
+	// 인수란?
 	/*
-	// 코드 영역
-	// 데이터 영역 -> BSS, Read Only Data Segment, 
-	// 스택
-    // 힙
-
-    // "count"
-	// [c][o][u][n][t][/0] -> 5 char + null = 6 byte
-
-	// 4 byte 변수의 메모리를 저장할 수 있는 포인터 변수
-	// char * ptr -> [c][o][u][n][t][\0]
-    const char * ptr = "count"; 
-	
-	// 포인터가 변수가 어디를 가리키고 있는지 확인하기 위해서
-	// 거기 있는 값을 출력하기 위해서 %c로 출력합니다. 
-
-	//ptr[0] = "T";
-	// *ptr을 하는 순간 포인터가 가리키고 있는 위치에 접근해서 값  을 출력합니다.
-
-	// ptr = count
-	// "%s" 문자열의 시작주소로 접근해서 값을 count 출력한다고 보시면 됩니다.
-	printf("ptr이 가리키는 주소 : %p\n", ptr);
-	printf("ptr이 가리키는 값 : %c\n", ptr[0]);
-	printf("ptr이 가리키는 문자열의 값 : %c\n", *ptr);
-	printf("ptr이 가리키는 문자열의 값 : %s\n", ptr);
-	*/
-	
-	// 이중 포인터 
-	/*
-	// [4 byte] 
+	// 함수가 호출될 때 매개변수에 실제로 전달되는 값입니다.
 	int value = 100;
-
-	// ptr(value 주소) -> value 시작 주소를 가리킵니다.
-	int * ptr = &value;
-
-	// twoPtr(이중 포인터)은 ptr이라는 포인터 변수의 주소를 저장합니다.
-	// twoPtr(ptr의 주소) -> tpr의 시작 주소를 가리킵니다.
-	int ** twoPtr = &ptr;
-
-	printf("value의 시작 주소 : %p\n", &value);
-	printf("ptr이 가리키는 값 : %p\n", ptr);
-	printf("twoPtr이 가리키는 값 : %p\n", twoPtr);
-
-	printf("ptr 변수가 가리키고 있는 변수의 값 : %d\n", * ptr);
-	printf("twoPtr 변수가 가리키고 있는 변수의 값 : %d\n", ** twoPtr);
-
-    //    twoPtr(00AAEE66)     ptr(00FF883A)    value
-	//      [00FF883A] -----> [00DDFC55]----> [00DDFC55] 
+	Temp(value); // value <- ); // 10(x), 20(y)
+	Add(10, 20);
 	*/
 
-	// 소수 판별하기
+	// 지역 변수
 	/*
-	// 소수 (1보다 큰 자연수 중에 1과 자기 자신만을 약수로 가지는 수)
+	// { } 내에서 선언된 변수로 { } 내에서만 사용할 수 있으며, { }를 벗어나면 소멸됩니다.
+	int x = 10;
 	
-	// 내가 입력한 숫자가 소수인지 아닌지 판별하는 프로그램
-	// 5 -> 소수입니다.
-	// 6 -> 소수가 아닙니다
-
-	int count = 0;
-	int value;
-
-	scanf_s("%d", &value);
-
-	for (int i = 0; i <= value; i++)
 	{
-		if (value % i == 0)
-		{
-			count++;
-		}
+		int x = 20;
+		printf("중괄호 안에 있는 x의 주소 : %p\n", &x);
 	}
+   
+	x = 100;
+	printf("변수 x의 주소 : %p\n", &x); // x
 
-	if (count == 2)
-	{
-		printf("소수");
-	}
-	else
-	{
-		printf("소수가 아닙니다.");
-	}
+	count++;
+	Minus();
+
+	Home();
+	Home(); 
+	Home();
+
+	Area();	
+	Area();	
+	Area();	
 	*/
+
+    printf("함수의 값 : %d\n",Calculator());
+
+	int memory = Calculator();
+	printf("memory 변수의 값 : %d\n", memory);
+
+	printf("나누기 함수의 값 : %f\n", Divide(5, 2));
+
 }
