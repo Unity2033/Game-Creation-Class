@@ -1,129 +1,101 @@
-#include <stdio.h>
+﻿#include <stdio.h>
+#include <stdlib.h>	// 메모리 할당 함수 라이브러리
+#include <time.h>
 
-// �Լ��� �����̶�?
-// ȣ���� �Լ��� �����Ϸ����� �̸� �˷��ִ� �����Դϴ�.				  
-// ���� �н� ������(O), ��Ƽ �н� ������
-void Function(char * name, void * value);
-
-void Integer(int x)
+// 매개 변수는 함수 내부에서만 사용가능한 변수입니다.
+// 매개 변수가 포인터로 선언되면, 변수의 주소를 전달해야 합니다. 
+void Swap(int * x, int * y)
 {
-	printf("Integer �Լ��� x �� : %d\n", x);
-}
+	// x만 출력하면 포인터 변수 x(주소)만 출력합니다.
+	// 그래서 *(애스터리스크) 연산자를 사용하여 메모리에 접근하여 값을 출력합니다.
+	int temp = *x;
 
-void Decimal(float x)
-{
-	printf("Decimal �Լ��� x �� : %f\n", x);
-}
+	*x = *y;
 
-void Character(char x)
-{
-	printf("Character �Լ��� x �� : %c\n", x);
-}
-
-// Swap �Լ����� ���� �ٲٴ� ������ ������ּ���.
-void Swap(int x, int y)
-{
-	// �Ű� ������ x(10), y(20)
-	// ���� ���� temp = y(20)
-	int temp = y;
-
-	// y(10) <- x(10)
-	y = x;
-
-	// x(20) <- tmep(20) 
-	x = temp;
-}
-
-void Plus(int x, int y)
-{
-	printf("���ϱ� �Լ��� ��� : %d", x + y);
-}
+	*y = temp;
+	                                                   
+	// x 변수가 가리키는 주소와 y 변수가 가리키는 주소를 출력합니다.
+	printf("매개 변수 x의 주소 : %p, 매개 변수 y의 주소 : %p\n", x, y);
+} // <-	함수가 종료되는 순간 매개 변수 x와 y값이 사라집니다.
 
 void main()
 {
-	// ����(void) �����Ͷ�?
+	// 참조에 의한 호출
 	/*
-    // �ڷ����� �������� ���� ���·� ��� �ڷ����� ������ �� �ִ� �������Դϴ�.
-	int value = 10;
+	// 함수 호출 시 전달되는 변수의 주소를 함수의 인수로 전달하는 방법입니다.
+	int x = 10; 
+	int y = 20;
 
-	void * ptr = &value;
+	printf("x 변수의 값 : %d, y 변수의 값 : %d\n", x, y);
 
-	// ���� �����ʹ� �޸� �ּҿ� �����ؼ� ���� ������ �� �����ϴ�.
-	*(int *)ptr = 20;
+	 // ex) x의 주소 : 00FF46DB, y의 주소 : 00FF60DB
+	Swap(&x, &y);
 
-	printf("ptr�� ����Ű�� �� : %d\n", *(int *)ptr);
-	// ���� �����ͷ� ������ �޸𸮿� �����Ϸ��� ���� �����Ͱ� ����Ű�� 
-	// ������ �ڷ������� �� ��ȯ�� ���־�� �մϴ�.		
+	printf("x 변수의 값 : %d, y 변수의 값 : %d\n", x, y);
 
-	float decimal = 10.5;
+	// 참조에 의한 호출은 매개 변수에 변수의 주소를 넘겨준 다음 
+	// 외부에 있는 변수의 주소가 참조되어 외부에 있는 변수에 영향을 끼칠 수 있습니다.	​
 
-	ptr = &decimal;
-	*(float*) ptr = 20.5;
-	printf("ptr�� ����Ű�� �� : %f\n", *(float*) ptr);	
- 
-	// ���� �Լ��� �Է��ϴ� ������(����)�� ��µǵ��� �ϰ� ���� ��
-	// char(����) int(����) float(�Ǽ�)
-	//Integer(50);
-	//Character('A');
-	//Decimal(10.5);
-
-	int A = 10;
-	float B = 99.6;
-	char C = 'R';
-
-	Function("int", &A); // <-
-	Function("float", &B);
-	Function("char", &C);
+    // 값에 의한 호출은 매개 변수에 값만 넘겨주므로 외부에 있는 변수의 값이 변경될 일이 없습니다.
 	*/
 
-	// �� ���� ������ �� �ٲ��ּ���.
-	// �ϳ��� �ӽ� ������ ���� �ű⿡ ���� �����ߴٰ� �ű�� �˴ϴ�.
-	int A = 10;
-	int B = 20;
+	// 동적 할당이란?
+	/*
+	// 프로그램이 실행 중에 사용자가 필요한 만큼 메모리를 할당하는 작업입니다.
 
-	//printf("���� A�� �� : %d, ���� B�� �� : %d\n", A, B);
+	// 4 byte 메모리
+	// 포인터 변수 ptr
 
-	//  10  20
-	// ���� ���� ȣ���̶�?
-    // �Լ� ȣ�� �� ���޵Ǵ� ������ ���� �����Ͽ�
-	// �Լ��� ���ڷ� �����ϴ� ����Դϴ�.
-	Swap(A, B);
-	Plus(10, 20);
-	//printf("���� A�� �� : %d, ���� B�� �� : %d\n", A, B);
+	// 스택 			      힙
+	// ptr -----------> [][][][]
+    // 4 byte 크기의 메모리 공간을 할당합니다.
+	// 포인터 변수 ptr은 동적으로 할당한 메모리의 시작 주소를 가리킵니다.
+	int * ptr = (int *)malloc(sizeof(int));
 
-	// ���ϱ� �Լ� (2���� �Ű� ������ �����ϴ�.)
-	// 2�� �μ��� ���� �־ ���Ǵ� �ᱣ���� ����մϴ�.
-	// �Լ�(10,20) = 30
+	// 메모리를 동적 할당할 때 주소를 범용 포인터로
+	// 반환하기 때문에 자료형을 변환한 다음 메모리에 할당해야 합니다.
+	*ptr = 10;
 
-	// ���� �Լ� (2���� �Ű� ������ �����ϴ�.)
-	// 2�� �μ��� ���� �־ ���Ǵ� �ᱣ���� ����մϴ�. 
-	// �Լ�(5,5) = 0
+	printf("ptr이 가리키는 주소 : %p\n", ptr);
+	printf("ptr이 가리키는 값 : %d\n", * ptr);
 
-	// ���� �Լ� (2���� �Ű� ������ �����ϴ�.)
-	// 2�� �μ��� ���� �־ ���Ǵ� �ᱣ���� ����մϴ�.
-	// �Լ�(5,5) = 25 
+	// 동적 할당한 메모리는 free함수를 통해 해제해야 합니다.
+	// 동적 할당한 메모리는 해제하지 않고 방치하게 되면 메모리 누수가 발생합니다.
+	free(ptr);
+	*/
 
-	// ������ �Լ� (2���� �Ű� ������ �����ϴ�.)
-	// 2�� �μ��� ���� �־ ���Ǵ� �ᱣ���� ����մϴ�.
-	// �Լ�(10,10) = 1 
-}
+    // 메모리
+	// 코드 영역
+	// 데이터 영역
+	// 힙 영역 <- 동적 할당
+	// 스택 영역
 
-void Function(const char * name, void * value)
-{
-	printf("%p\n", name); // name ������ ���� �ּ� ex) 00FF55DA
-	printf("%s\n", name); // name ������ ���ڿ� int == int					 
+	// UP - DOWN 게임
+	// 1. 컴퓨터가 랜덤한 숫자를 뽑습니다. 변수 (a) <- 1 ~ 50 랜덤한 값을 넣어줍니다.
+	// 2. 우리가 scanf_s( )함수를 사용해서 값을 입력합니다. 변수 (b) <- 입력한 값을 넣어줍니다.
+	// 3. 그다음 컴퓨터가 뽑은 랜덤한 숫자와 우리가 입력한 숫자가 맞는지 확인하는 게임입니다.
+ 
+	// if(a와 b가 맞는지 확인합니다.)
+	// 맞으면 "컴퓨터에게 승리하였습니다."
+	// 틀리면 HP가 1씩 감소합니다.
 
-	// if���� �񱳵Ǵ� ������ %s�� �����մϴ�.
-	if (name == "int")
-	{
-		printf("%d\n", *(int *) value);
-	}
-	else if (name == "float")
-	{
-		printf("%f\n", *(float *) value);
-	}
-	else if (name == "char")
-	{
-		printf("%c\n", *(const char*)value);
+	// 컴퓨터가 뽑은 랜덤한 값 : (33)
+	// 20값을 입력 (컴퓨터가 뽑은 숫자보다 작습니다.) HP -1;
+	// 34값을 입력 (컴퓨터가 뽑은 숫자보다 큽니다.) HP -1;
+    
+	// rand() : 0 ~ 32767 사이의 난수 값을 반환합니다.
+	// 컴퓨터는 완벽한 랜덤을 만들 수 없습니다.
+	// 시간을 가져와서 1970년 1월 1일 기준으로 시간을 가져와서 랜덤을 생성합니다.
+
+
+	// 1 ~ 10사이의 난수값만 나올 수 있도록 설정해주세요.
+	// % 연산자를 사용해야 합니다.
+
+	srand(time(NULL));
+
+	for (int i = 0; i < 10; i++)
+	{						  
+		// rand()  0 ~ 32767 % 10 + 1
+		printf("%d\n", rand() % 10 + 1);
 	}
 }
