@@ -1,113 +1,81 @@
 ﻿#include <stdio.h>
+#include <string.h> // 문자열 관련 함수
 
-struct Object
+// 자기 참조 구조체
+/*
+struct Node
 {
-	// 구조체는 선언만 해놓은 상태는 메모리가 생성되지 않습니다.
-	short size;	// 2 BYTE 
-	int height;	// 4 BYTE
-	double position; // 8 BYTE
+	int data;
+	struct Node * pointer; // <- 구조체를 가리킬 수 있는 포인터 변수
 };
-
-struct Monster
-{
-	int health;	// 4 BYTE
-	double attack; // 8 BYTE
-	short defense; // 2 BYTE
-};
-
-
-struct Data
-{
-	int x; // 4 byte
-	int y; // 4 byte
-};
-
-struct Shape 
-{
-	char name[10]; // 10 BYTE
-	double size;  // 8 BYTE
-
-	// [][][][][][][][] / [][](6byte padding) / size 8byte 변수
-};
-
-struct Animal
-{
-	int leg;
-	double size;
-};
+*/
 
 int main()
 {
-	// 바이트 패딩이란?
+	// 자기 참조 구조체란?
 	/*
-	// 멤버 변수를 메모리에서 CPU로 읽을 때 한 번에 읽을 수 있도록
-	// 컴파일러가 레지스터의 블록에 맞추어 바이트를 패딩해주는 최적화 작업입니다.
+	// 자신과 동일한 구조체를 가리킬 수 있는 포인터 변수를
+	// 멤버 변수로 가지는 구조체입니다.
 
-	// 구조체의 경우 정의해주어야 멤버 변수의 메모리가 생기므로 
-	// 멤버 변수의 데이터를 초기화할 수 있습니다.
-	struct Object character = { 10, 100, 3.5f };
-	struct Data data = { 10,10 };
+	struct Node node1 = { 10, NULL};
+	struct Node node2 = { 20, NULL };
+	struct Node node3 = { 30, NULL };
 
-	// 구조체 크기의 경우 멤버 변수의 순서에 따라 메모리의 크기가 
-	// 다르게 설정될 수 있으며, 구조체 크기를 결정하는 형태는 
-	// 기본 자료형으로만 구성됩니다.
-	struct Monster dragon = {100,30.5f,10};
+	struct Node * structPtr = &node1;
 
-	struct Shape circle;
+	printf("첫 번째 구조체 data의 값 : %d\n", structPtr->data);
 
-	// const char * name ----> Circle
-	// char [10] name ---> memcpy (메모리 복사 함수)
-	// "Cirle" --> name이라는 배열에 메모리를 복사해서 넣어주어야 합니다.
-	// circle.name = "Cirle";
+	structPtr->pointer = &node2;
 
-	printf("Data 구조체의 크기 : %d\n", sizeof(data));
-	printf("Object 구조체의 크기 : %d\n", sizeof(character));
-	printf("Monster 구조체의 크기 : %d\n", sizeof(dragon));
-	printf("Shape 구조체의 크기 : %d\n", sizeof(circle));
+	printf("두 번째 구조체 data의 값 : %d\n", structPtr->pointer->data);
+
+	structPtr->pointer->pointer = &node3;
+
+	printf("세 번째 구조체 data의 값 : %d\n", structPtr->pointer->pointer->data);
+	*/
+
+	// 문자열 함수	
+	// strlen - (문자열의 길이를 출력하는 함수)
+	char name [ ] = { "Bard" }; 
+	printf("name의 값 : %s\n", name);
+
+	// strlen( )함수는 문자열의 길이를 구할 때 NULL문자 이전의 문자열 길이만 계산합니다.
+	printf("name배열의 길이 : %d\n", strlen(name));
+
+	// strcpy - (문자열을 복사하는 함수)
+	char A [10] = { "LEAGUE" };	 
+	char B [10] = { "LEGEND" };
+
+	// read only 영역에 있는 문자열 리터럴이기 때문에 값을 변경할 수 없습니다.
+	const char * C = "Player";
+	const char * D = "Monster";
+
+    /*
+	// A 와 B는 문자열의 시작주소를 의미합니다.
+	// 00FF44D0(A) <- 00DD22A0(B)
+
+	int i = 0;
+	while (A[i]) // NULL문자는 0을 의미하기 때문에
+	{
+		A[i] = B[i];
+		i++;
+	} // while문의 값이 false로 변경됩니다.
+
+	printf("A의 문자열은 : %s", A);
+	*/
+
+	// strcpy( )함수의 첫 번째 매개변수는 복사받을 문자열입니다.
+	// strcpy( )함수의 두 번째 매개변수는 복사할 문자열입니다.
+		
+	// strcpy_s()함수의 첫 번째 매개변수는 복사받을 문자열입니다.
+	// strcpy_s()함수의 두 번째 매개변수는 복사할 메모리 크기입니다.
+	// strcpy_s( )함수의 세 번째 매개변수는 복사할 문자열입니다.
+	strcpy_s(A, 10, B);
+	printf("복사한 A 문자열의 값 : %s", A);
+
+	// strcmp - (문자열을 비교하는 함수)
+	// strcat - (문자열을 연결하는 함수)
 	
-	// align 규칙
-	// CPU가 데이터를 읽을 때 
-	// 홀수 (x) 3 byte, 5 byte / 짝수 (o) 2 byte, 4 byte, 8 byte, 12 byte, 16 byte 
-	// 32bit OS에서는 4 byte씩 메모리를 읽고, 64bit OS에서는 8 byte씩 메모리를 읽습니다.
-
-	// 구조체의 크기는 구조체를 구성하는 멤버 중에 
-	// 크기가 가장 큰 자료형의 배수가 되도록 정렬합니다.
-	*/
-
-	// 구조체 포인터란?
-	/*
-	// 구조체를 가리키는 포인터입니다.
-
-	// 구조체 포인터 선언
-	struct Animal * pointer;
-
-	printf("구조체 포인터의 크기 : %d\n", sizeof(pointer));
-
-	struct Animal cat;
-
-	// 구조체 주소는 구조체 첫번째 멤버 변수에 있는 시작 주소를 의미합니다.
-	printf("구조체 cat의 주소 : %p\n", &cat);
-	printf("구조체 cat의 leg 주소 : %p\n", &cat.leg);
-	printf("구조체 cat의 size 주소 : %p\n", &cat.size);
-
-	pointer = &cat;
-
-	// 구조체 포인터로 구조체에 있는 메모리에 접근할 때는 
-	// -> 연산자를 사용해야 합니다.
-	pointer->leg = 200;
-	pointer->size = 90.3f;
-
-	// 멤버 연산자를 사용하려면 연산자 우선 순위에 맞추어 작성해주면 됩니다.
-	(*pointer).leg = 400;
-	(*pointer).size = 50.6f;
-
-	printf("구조체 포인터로 접근한 leg의 값 : %d\n", pointer->leg);
-	printf("구조체 포인터로 접근한 size의 값 : %lf\n", pointer->size);
-	*/
-
-	// C 언어 포폴 기간 2주 
-
-
 	return 0;
 }
 
