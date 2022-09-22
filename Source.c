@@ -1,61 +1,109 @@
-﻿#include <stdio.h>
+﻿#define _CRT_SECURE_NO_WARNINGS // strcpy 보안 경고로 인한 컴파일 에러 방지
+#include <stdio.h>
 #include <string.h>
 
-void MYstrcat(char * str1, const char * str2)
-{
-	// str1이 NULL문자가 아니라면
-	while (*str1 != '\0')
-	{
-		// str1이 가리키는 포인터를 증가시킵니다.
-		str1++;
-	}
+// Typedef
+/*
+// 이미 사용되는 자료형을 다른 새로운 자료형으로 재정의할 수 있도록 해주는 키워드입니다.
+typedef int INT32; // int == INT32
 
-	while (*str2 != '\0')
-	{
-		*str1 = *str2;
-		str1++;
-		str2++;
-	}	
-}
+// typedef로 구조체를 선언할 때 _이름 ex) _Player로 선언하고,
+// 정의 ex) Player 이름으로 선언합니다.
+typedef struct _Player 
+{
+	int x;
+	int y;
+	char name [20];
+	const char * shape;
+}Player;
+*/
 
 int main()
 {
-	// strcmp 문자열 비교 함수
-    /*
-	char memory1[] = { "ABCD" }; 
-	char memory2[] = { "ABCT" };
-	char memory3[] = { "ABCC" };	
+    // typedef
+	/*
+	int a = 10;
+	INT32 b = 20;
 
-	// strcmp는 첫번째 문자열의 크기가 크다면 양수(+1)을 반환합니다.
-	// 그런데 두번째 문자열의 크기가 크다면 음수(-1)을 반환합니다.
-	// 만약에 두 개다 문자열의 크기가 같다면 0을 반환합니다.
-	printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory2));
-	printf("두 개의 문자열을 비교한 값 : %d\n", strcmp(memory1, memory3));
+	printf("a의 값 : %d\n", a);
+	printf("b의 값 : %d\n", b);
 
-	// strcmp 영어 사전 순서로 우선 순위가 결정됩니다.
+	Player player;
 
-	// strncmp : 첫번째 매개변수에 비교할 문자열
-	// strncmp : 두번째 매개변수에 비교할 문자열
-	// strncmp : 세번째 비교할 문자열의 길이
+	char nickName1[] = { "Jason" };
 
-	// ABC == ABC = 0
-	// 한글과 컴퓨터 
-	printf("두 개의 문자열을 비교한 값 : %d\n", strncmp(memory1, memory2, 3));
+	strcpy(player.name, "Jason");
+	printf("player의 이름 : %s", player.name);
 	*/
 
-	// strcat 문자열 연결 함수
-	char name1[10] = { "Kim" };
-	char name2[] = { "Geum" };
+    // 문제이름 : 합
+	/*
+	// 입력값 n이 주어졌을때, 1부터 n까지의 합을 구하는 프로그램을 작성해주세요.
 
-	// strcat같은 경우에는 복사받을 문자열의 크기를 넉넉히 지정해주어야 합니다.
-	// name1 [K][i][m][G][e][u][m][\0][ ][ ] <-
-	// name2 [G][e][u][m][\0]
-	// strcat_s(name1, 10, name2);
-	// printf("name1의 문자열 : %s", name1);
+	// 예제 입력
+	// n = 3
 
-	MYstrcat(name1, name2);
+	// 예제 출력
+	// 9
 
-	printf("%s", name1);
+	int n = 0; // 입력값 n 변수
+	int result = 0; // 누적해서 값을 출력하는 변수
+
+	scanf_s("%d", &n);
+
+	for (int i = 1; i <= n; i++) 
+	{
+		result += i;
+	}
+
+	printf("result의 값 : %d", result);
+	*/
+
+	// 별찍기
+	// *
+	// **
+	// ***
+	// ****
+	// *****
+
+	
+	// 문제 : 역순으로 별찍기
+	// 예제 출력
+	//     *
+	//    **
+	//   ***
+	//  ****
+	// *****
+
+	for (int i = 1; i <= 5; i++)
+	{
+		for (int j = 1; j <= 5 - i; j++)
+		{
+			printf("  ");
+		}
+
+		for (int k = 1; k <= i; k++)
+		{
+			printf("☆");
+		}
+
+		printf("\n");
+	}
+
+	// 예제 입력은 없습니다.
+
+	// c언어 게임 개발론
+	/*
+	// 첫 번째 
+	// 인터넷에 많은 자료를 검색해서 자기가 원하는 코드를 보고 그걸 응용해서 개발해야 합니다.
+	
+	// 두 번째
+	// 어느정도 구상을 해주어야합니다.
+	// 1.컨셉
+	// 2.컨셉에 알맞는 기술들을 깊이있게 습득합니다.
+	*/
+
+
 
 	return 0;
 }
