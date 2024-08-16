@@ -2,175 +2,139 @@
 
 void main()
 {
-#pragma region 조건문
-	// 어떤 조건이 주어질 때 해당 조건에 따라
-	// 동작을 수행하도록 실행하는 명령문입니다.
+#pragma region 반복문
+	// 프로그램 내에서 특정한 작업을 반복적으로
+	// 수행하는 명령문입니다.
 
-#pragma region 관계 연산자
-	// 두 개의 피연산자의 값을 비교하여 그 결과를 0
-	// 또는 1이라는 값으로 나타내는 연산자입니다.
+#pragma region 증감연산자
+	 // 피연산자를 하나씩 증가시키거나 감소시킬 때
+	 // 사용하는 연산자입니다.
 
-	// int condition1 = 10 > 0;
-	// int condition2 = 10 < 0;
-	// int condition3 = 10 >= 0;
-	// int condition4 = 10 <= 0;
-	// int condition5 = 10 == 10;
-	// int condition6 = 10 != 10;
-	// 
-	// printf("condition1 변수의 값 : %d\n", condition1);
-	// printf("condition2 변수의 값 : %d\n", condition2);
-	// printf("condition3 변수의 값 : %d\n", condition3);
-	// printf("condition4 변수의 값 : %d\n", condition4);
-	// printf("condition5 변수의 값 : %d\n", condition5);
-	// printf("condition6 변수의 값 : %d\n", condition6);
+	 // int x = 0;
+	 // int y = 0;
+	 // 
+	 // // int result = ++x;
+	 // // 
+	 // // printf("x 변수의 값 : %d\n", x);
+	 // // printf("result 변수의 값 : %d\n", result);
+	 // // 
+	 // // result = --x;
+	 // // 
+	 // // printf("x 변수의 값 : %d\n", x);
+	 // // printf("result 변수의 값 : %d\n", result);
+	 // 
+	 // int data = y++;
+	 // 
+	 // printf("y 변수의 값 : %d\n", y);
+	 // printf("data 변수의 값 : %d\n", data);
+	 // 
+	 // data = y--;
+	 // 
+	 // printf("y 변수의 값 : %d\n", y);
+	 // printf("data 변수의 값 : %d\n", data);
 
-	// 관계 연산자는 조건이 맞을 때 1이라는 값을 반환하며,
-	// 조건이 틀릴 땐 0이라는 값으로 반환합니다.
+	 // 전위 증감 연산자는 변수의 값을 증감시킨 후에
+	 // 연산을 수행하고, 후위 증감 연산자는 연산을
+	 // 수행한 다음 변수의 값을 증감시킵니다. 
 #pragma endregion
 
-#pragma region if문
-	// 어떤 특정한 조건을 비교하여 조건이 맞다면
-	// 실행되는 명령문입니다.
+#pragma region for문
+	// 초기식을 연산하여 조건식의 결과에 따라 특정한
+	// 횟수만큼 반복하는 반복문입니다.
 
-	//	int health = 0;
-	//	
-	//	if (health <= 0)
+	//	for (int i = 1; i <= 10; i++)
 	//	{
-	//		printf("Destroy");
+	//		printf("Hello World %d\n", i);
 	//	}
 
-#pragma endregion
-
-#pragma region else if문
-	// if문의 조건이 틀릴 때 else if문의 
-	// 조건이 맞다면 실행되는 명령문입니다.
-
-	//	int level = 99;
-	//	
-	//	if (level == 71)
-	//	{
-	//		printf("1차 전직\n");
-	//	}
-	//	else if (level == 99)
-	//	{
-	//		printf("2차 전직\n");
-	//	}
+	// 반복문의 경우 조건이 끝나는 형태와 반대로 초기식을
+	// 연산하게 되면 조건이 일치하지 않아 계속 반복적으로
+	// 실행되는 문제가 발생합니다.
 
 #pragma endregion
 
-#pragma region else문
-	// if문과 else if문의 조건이 다 틀리면
-	// 실행되는 명령문입니다.
-
-	//	int money = 0;
-	//	
-	//	if (money < 100)
-	//	{
-	//		printf("100원\n");
-	//	}
-	//	else if (money < 1000)
-	//	{
-	//		printf("1000원\n");
-	//	}
-	//	else
-	//	{
-	//		printf("예외 처리\n");
-	//	}
-
-	// if문에 연결된 모든 조건문의 조건이 맞을 때
-	// 가장 위에 있는 조건문만 실행됩니다.
-
+#pragma region (1) ~ n까지의 합
+	//int sum = 0; 
+	//int n = 10;
+	//
+	//for (int i = 1; i <= n; i++)
+	//{
+	//	sum += i;
+	//}
+	//
+	//printf("sum 변수의 값 : %d\n", sum);
 #pragma endregion
 
-#pragma region switch문
-	// 어떤 결과에 따라 그 결과부터 실행되는 명령문입니다.
+#pragma region while문
+	// 특정 조건을 만족할 때까지 계속해서 주어진
+	// 명령문을 실행하는 반복문입니다.
 
-	// char grade = 'F';
-
-#pragma region break문
-	// 특정한 지점에서 분기를 탈출하는 제어문입니다.
-	
-	// break 문을 만나는 순간 현재 진행하고 있는 
-	// 위치에서 종료합니다.
+	//	int count = 5;
+	//	
+	//	while (count > 0)
+	//	{
+	//		printf("Game Start\n");
+	//	
+	//		count--;
+	//	}
 #pragma endregion
 
-	//	switch (grade)
+#pragma region do-while문
+	// 조건과 상관없이 한 번의 작업을 수행한 다음
+	// 조건에 따라 명령문을 실행하는 반복문입니다.
+
+	//	int connect = 0;
+	//	
+	//	do
 	//	{
-	//	case 'A': printf("A 등급\n");
-	//		break;
-	//	case 'B': printf("B 등급\n");
-	//		break;
-	//	case 'C': printf("C 등급\n");
-	//		break;
-	//	case 'D': printf("D 등급\n");
-	//		break;
-	//	default: printf("예외 처리\n");
-	//		break;
-	//	}
-
-	// switch 문의 경우 조건에 해당하는 값에 따라
-	// 조건의 위치로 이동합니다.
-
+	//		printf("Login\n");
+	//	} 
+	//	while (connect > 5);
 #pragma endregion
 
-#pragma region 논리 연산자
+#pragma region continue문
+	// 해당 조건문만 실행하지 않고, 반복문은 이어서
+	// 실행하는 제어문입니다.
 
-    //	int price = 1000;
-    //	int speed = 10;
-	//	
-	//	if (price >= 0 && speed >= 0)
+	//	for (int i = 1; i <= 5; i++)
 	//	{
-	//		printf("AND\n");
-	//	}
+	//		if (i % 2 == 0)
+	//		{
+	//			continue;
+	//		}
 	//	
-	//	if (price >= 0 || speed <= 0)
-	//	{
-	//		printf("OR\n");
-	//	}
-	//	
-	//	if (!(price >= 0))
-	//	{
-	//		printf("NOT\n");
+	//		printf("%d ", i);
 	//	}
 
 #pragma endregion
 
-#pragma region 사분면
+#pragma region (2)중 for문
 
-	//	int x = 1;
-	//	int y = -1;
+	//	for (int i = 0; i < 3; i++)
+	//	{
+	//		for (int j = 0; j < 3; j++)
+	//		{
+	//			printf("♥");
+	//		}
 	//	
-	//	if (x > 0 && y > 0)
-	//	{
-	//		printf("제 1 사분면\n");
+	//		printf("♡");
 	//	}
-	//	else if (x < 0 && y > 0)
-	//	{
-	//		printf("제 2 사분면\n");
-	//	}
-	//	else if (x < 0 && y < 0)
-	//	{
-	//		printf("제 3 사분면\n");
-	//	}
-	//	else if (x > 0 && y < 0)
-	//	{
-	//		printf("제 4 사분면\n");
-	//	}
-	//	else if (x != 0 && y == 0)
-	//	{
-	//		printf("x 절편\n");
-	//	}
-	//	else if (x == 0 && y != 0)
-	//	{
-	//		printf("y 절편\n");
-	//	}
-	//	else
-	//	{
-	//		printf("원점\n");
-	//	}
-	//	
+
 #pragma endregion
 
+#pragma region 구구단
+
+   //for (int i = 1; i <= 9; i++)
+   //{
+	//   for (int j = 1; j <= 9; j++)
+	//   {
+	//	   printf("%d x %d = %d\n", i, j, i * j);
+	//   }
+   //
+   //   printf("\n");
+   //}
+
+#pragma endregion
 
 #pragma endregion
 
