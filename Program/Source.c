@@ -7,6 +7,66 @@
 #define	RIGHT 77
 #define	DOWN  80
 
+int screenIndex;
+HANDLE screen[2];
+
+void Initialize()
+{
+	CONSOLE_CURSOR_INFO cursor;
+
+	// 화면 버퍼를 2개 생성합니다.
+	screen[0] = CreateConsoleScreenBuffer
+	(
+		GENERIC_READ | GENERIC_WRITE,
+		0,
+		NULL,
+		CONSOLE_TEXTMODE_BUFFER,
+		NULL
+	);
+
+	screen[1] = CreateConsoleScreenBuffer
+	(
+		GENERIC_READ | GENERIC_WRITE,
+		0,
+		NULL,
+		CONSOLE_TEXTMODE_BUFFER,
+		NULL
+	);
+
+	cursor.dwSize = 1;
+	cursor.bVisible = FALSE;
+
+	SetConsoleCursorInfo(screen[0], &cursor);
+	SetConsoleCursorInfo(screen[1], &cursor);
+
+}
+
+void Flip()
+{
+	SetConsoleActiveScreenBuffer(screen[screenIndex]);
+
+	screenIndex = !screenIndex;
+}
+
+void Clear()
+{
+	COORD position = { 0,0 };
+
+	DWORD dword;
+
+	CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	GetConsoleScreenBufferInfo(handle, &consoleInfo);
+
+	int width = consoleInfo.srWindow.Right - consoleInfo.srWindow.Left + 1;
+	int height = consoleInfo.srWindow.Bottom - consoleInfo.srWindow.Top + 1;
+
+	FillConsoleOutputCharacter(screen[screenIndex], ' ', width * height, position ,&dword);
+}
+
+
 
 void Position(int x, int y)
 {
@@ -24,30 +84,39 @@ int main()
 	int x = 0;
 	int y = 0;
 
+	CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
+
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	GetConsoleScreenBufferInfo(handle, &consoleInfo);
+
 	while (1)
 	{
 		Position(x, y);
 		printf("★");
 
-		key = _getch();
-
-		if (key == -32)
+		if (_kbhit())
 		{
 			key = _getch();
-		}
 
-		switch (key)
-		{		   
-		case UP		: y--;
-			break;
-		case LEFT	: x -= 2;
-			break;
-		case RIGHT	: x += 2;
-			break;
-		case DOWN	: y++;
-			break;
-		default		: printf("Exception\n");
-			break;
+			if (key == -32)
+			{
+				key = _getch();
+			}
+
+			switch (key)
+			{
+			case UP:  if (y > 0) y--;
+				break;
+			case LEFT:  if (x > 0) x -= 2;
+				break;
+			case RIGHT:  if (consoleInfo.srWindow.Right - 1 > x) x += 2;
+				break;
+			case DOWN:  if (consoleInfo.srWindow.Bottom > y) y++;
+				break;
+			default: printf("Exception\n");
+				break;
+			}
 		}
 
 		system("cls");
