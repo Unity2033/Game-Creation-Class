@@ -1,10 +1,9 @@
 #pragma once
 #include "Terran.h"
-
-class SiegeTank : public Terran
+class Goliath : public Terran
 {
-public:
-	SiegeTank();
+public :
+	Goliath();
 
 	void Stats();
 };
