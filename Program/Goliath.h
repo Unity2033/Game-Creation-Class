@@ -5,6 +5,6 @@ class Goliath : public Terran
 public :
 	Goliath();
 
-	void Stats();
+	void Stats() override;
 };
 
