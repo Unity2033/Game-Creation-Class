@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class6th (Polymorphism)", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class7th (Virtual Function)", "..\Class7th (Virtual Function)\Class7th (Virtual Function).vcxproj", "{CE3F1C2C-B1A5-4BC2-BC97-C43E1295C16D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Class8th (Abstract)", "..\Class8th (Abstract)\Class8th (Abstract).vcxproj", "{D7B40029-EDF2-468D-B522-591797206866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{CE3F1C2C-B1A5-4BC2-BC97-C43E1295C16D}.Release|x64.Build.0 = Release|x64
 		{CE3F1C2C-B1A5-4BC2-BC97-C43E1295C16D}.Release|x86.ActiveCfg = Release|Win32
 		{CE3F1C2C-B1A5-4BC2-BC97-C43E1295C16D}.Release|x86.Build.0 = Release|Win32
+		{D7B40029-EDF2-468D-B522-591797206866}.Debug|x64.ActiveCfg = Debug|x64
+		{D7B40029-EDF2-468D-B522-591797206866}.Debug|x64.Build.0 = Debug|x64
+		{D7B40029-EDF2-468D-B522-591797206866}.Debug|x86.ActiveCfg = Debug|Win32
+		{D7B40029-EDF2-468D-B522-591797206866}.Debug|x86.Build.0 = Debug|Win32
+		{D7B40029-EDF2-468D-B522-591797206866}.Release|x64.ActiveCfg = Release|x64
+		{D7B40029-EDF2-468D-B522-591797206866}.Release|x64.Build.0 = Release|x64
+		{D7B40029-EDF2-468D-B522-591797206866}.Release|x86.ActiveCfg = Release|Win32
+		{D7B40029-EDF2-468D-B522-591797206866}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
