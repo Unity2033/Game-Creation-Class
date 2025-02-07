@@ -1,36 +1,25 @@
 ﻿#include <iostream>
-#include <vector>
+#include <stack>
 
 using namespace std;
 
 int main()
 {
-#pragma region vector container
+#pragma region Stack
 
-    std::vector<int> vector;
+    std::stack<int> stack;
 
-    vector.reserve(6);
-    
-    vector.push_back(10);
-    vector.push_back(20);
-    vector.push_back(30);
-    vector.push_back(40);
-    vector.push_back(50);
+    stack.push(10);
+    stack.push(20);
+    stack.push(30);
 
-    for (int i = 0; i < vector.size(); i++)
+    cout << "Stack Size : " << stack.size() << endl;
+
+    while (stack.empty() == false)
     {
-        cout << vector[i] << " ";
-    }
+        cout << stack.top() << endl;
 
-    vector.pop_back();
-    vector.pop_back();
-
-    cout << "Vector Size : " << vector.size() << endl;
-    cout << "Vector Capacity : " << vector.capacity() << endl;
-
-    for (int i = 0; i < vector.size(); i++)
-    {
-        cout << vector[i] << " ";
+        stack.pop();
     }
 
 #pragma endregion
