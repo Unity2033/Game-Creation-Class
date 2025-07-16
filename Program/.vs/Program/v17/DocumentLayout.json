@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Program\\",
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Program\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2710CC78-56F9-4F2E-8898-490DF9C1C903}|Program.vcxproj|C:\\Users\\Administrator\\Desktop\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{2710CC78-56F9-4F2E-8898-490DF9C1C903}|Program.vcxproj|C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Program\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2710CC78-56F9-4F2E-8898-490DF9C1C903}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -40,11 +40,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Program\\Program.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Program\\Program.cpp",
               "RelativeDocumentMoniker": "Program.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Program\\Program.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAACwAAAAAAAAAAAAgwDgAAAAbAAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAAmwIEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T11:07:51.548Z",
               "EditorCaption": ""
