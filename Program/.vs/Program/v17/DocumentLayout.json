@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{2710CC78-56F9-4F2E-8898-490DF9C1C903}|Program.vcxproj|solutionrelative:Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{90F5F6A4-CECA-4AF7-82BE-E243A521E1E7}|..\\Class2th (Double Linked List)\\Class2th (Double Linked List).vcxproj|C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class2th (Double Linked List)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{566B9231-0312-4C89-AC8A-58195AE2092D}|..\\Class1th (Single Linked List)\\Class1th (Single Linked List).vcxproj|C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class1th (Single Linked List)\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -17,7 +20,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,14 +46,26 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Source.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class2th (Double Linked List)\\Source.cpp",
+              "RelativeDocumentMoniker": "..\\Class2th (Double Linked List)\\Source.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class2th (Double Linked List)\\Source.cpp",
+              "RelativeToolTip": "..\\Class2th (Double Linked List)\\Source.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-18T12:25:39.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Source.cpp",
               "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class1th (Single Linked List)\\Source.cpp",
               "RelativeDocumentMoniker": "..\\Class1th (Single Linked List)\\Source.cpp",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Class1th (Single Linked List)\\Source.cpp",
               "RelativeToolTip": "..\\Class1th (Single Linked List)\\Source.cpp",
               "ViewState": "AQIAAAEAAAAAAAAAAAAiwKoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-17T11:20:55.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T11:20:55.775Z"
             },
             {
               "$type": "Document",
@@ -60,7 +75,7 @@
               "RelativeDocumentMoniker": "Program.cpp",
               "ToolTip": "C:\\Users\\Administrator\\Desktop\\Game-Creation-Class\\Program\\Program.cpp",
               "RelativeToolTip": "Program.cpp",
-              "ViewState": "AQIAABQAAAAAAAAAAAAowDIAAAAAAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAABYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-07-15T11:07:51.548Z",
               "EditorCaption": ""
