@@ -92,9 +92,12 @@ public:
 	void erase(T data)
 	{
 		Node * currentNode = root;
+		Node* parentNode = nullptr;
 
 		while (currentNode != nullptr && currentNode->data != data)
 		{
+			parentNode = currentNode;
+
 			if (currentNode->data > data)
 			{
 				currentNode = currentNode->left;
@@ -104,6 +107,67 @@ public:
 				currentNode = currentNode->right;
 			}
 		}
+
+		if (currentNode == nullptr)
+		{
+			cout << "the data does not exist" << endl;
+		}
+		else if (currentNode->left == nullptr && currentNode->right == nullptr)
+		{
+			if (parentNode != nullptr)
+			{
+				if (parentNode->left == currentNode)
+				{
+					parentNode->left = nullptr;
+				}
+				else
+				{
+					parentNode->right = nullptr;
+				}
+			}
+			else
+			{
+				root = nullptr;
+			}	
+		}
+		else if (currentNode->left == nullptr || currentNode->right == nullptr)
+		{
+			if (currentNode == root)
+			{
+				if (currentNode->left != nullptr)
+				{
+					root = currentNode->left;
+				}
+				else
+				{
+					root = currentNode->right;
+				}
+			}
+			else
+			{
+				Node * childNode = nullptr;
+
+				if (currentNode->left != nullptr)
+				{
+					childNode = currentNode->left;
+				}
+				else
+				{
+					childNode = currentNode->right;
+				}
+
+				if (parentNode->left == currentNode)
+				{
+					parentNode->left = childNode;
+				}
+				else
+				{
+					parentNode->right = childNode;
+				}
+			}
+		}
+
+		delete currentNode;
 	}
 
 	~Set()
@@ -117,10 +181,12 @@ int main()
 	Set<int> set;
 
 	set.insert(10);
-	set.insert(6);
-	set.insert(20);
+	set.insert(17);
+	set.insert(5);
 	set.insert(3);
-	set.insert(15);
+	set.insert(20);
+
+	set.erase(17);
 
 	return 0;
 }
