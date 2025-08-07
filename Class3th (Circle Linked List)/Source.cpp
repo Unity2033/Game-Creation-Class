@@ -103,7 +103,7 @@ public:
 			Node* deleteNode = head;
 			Node* currentNode = head;
 
-			if (head = head->next)
+			if (head == head->next)
 			{
 				head = nullptr;
 			}
@@ -122,6 +122,51 @@ public:
 			delete deleteNode;
 
 			size--;
+		}
+	}
+
+	void remove(T data)
+	{
+		int count = size;
+
+		Node * currentNode = head;
+		Node* previousNode = nullptr;
+
+		for (int i = 0; i < count; i++)
+		{
+			if (currentNode->data == data)
+			{
+				if (currentNode == head)
+				{
+					currentNode = currentNode->next;
+
+					pop_back();
+				}
+				else if (currentNode == head->next)
+				{
+					currentNode = currentNode->next;
+
+					pop_front();
+				}
+				else
+				{
+					previousNode->next = currentNode->next;
+
+					delete currentNode;
+
+					currentNode = previousNode->next;
+
+					size--;
+				}
+
+			}
+			else
+			{
+				previousNode = currentNode;
+
+				currentNode = currentNode->next;
+			}
+
 		}
 	}
 
@@ -144,14 +189,11 @@ int main()
 {
 	List<int> list;
 
-	list.push_back(10);
-	list.push_back(20);
-	list.push_front(5);
+	list.push_back(1);
+	list.push_back(2);
+	list.push_back(3);
 
-	list.pop_front();
-	list.pop_front();
-	list.pop_back();
-	list.pop_back();
+	list.remove(1);
 
 	cout << list.empty() << endl;
 
